@@ -25,8 +25,9 @@ def init_data():
     for table,data in datas.items():
         db.clear(table)
         for d in data:
-            db.insert(table,d)
+            db.insert(table, d)
     db.close()
+
 
 if __name__ == '__main__':
     init_data()

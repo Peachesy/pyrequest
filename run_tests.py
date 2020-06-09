@@ -4,7 +4,6 @@ import unittest
 sys.path.append('./interface')
 sys.path.append('./db_fixture')
 from HTMLTestRunner import HTMLTestRunner
-from unittest import defaultTestLoader
 from db_fixture import test_data
 
 
@@ -18,10 +17,13 @@ if __name__ == "__main__":
     test_data.init_data() # 初始化接口测试数据
 
     now = time.strftime("%Y-%m-%d %H_%M_%S")
+    # dirpath = "D:\\PyCharmProject\\pyrequest\\report"
     filename = './report/' + now + '_result.html'
     fp = open(filename, 'wb')
+    # save(filename,dirpath)
+
     runner = HTMLTestRunner(stream=fp,
                             title='发布会签到系统接口自动化测试',
                             description='运行环境：MySQL(PyMySQL), Requests, unittest ')
-    runner.run(discover)
+    runner.run(discover, 0, False)
     fp.close()
